@@ -122,7 +122,7 @@ summarize\_save\_class.py contains the class to summarize the statistics collect
 
 ### Other files
 
-read\_data.py contains the three classes to read statistics recorded from both population and trajectory simulations. You may find these classes useful for reading simulation results saved in the HASH\_ID\_pD results files. Use dataClassFullSims if the simulation results in HASH\_ID\_pD were generated from population simulations. Use dataClassTraj if the simulation results in HASH\_ID\_pD were generated from trajectory simulations. And use dataClassif HASH\_ID\_pD contains results generated from both population and trajectory simulations.
+read\_data.py contains the three classes to read statistics recorded from both population and trajectory simulations. You may find these classes useful for reading simulation results saved in the HASH\_ID\_pD results files. Use dataClassFullSims if the simulation results in HASH\_ID\_pD were generated from population simulations. Use dataClassTraj if the simulation results in HASH\_ID\_pD were generated from trajectory simulations. And use dataClass if HASH\_ID\_pD contains results generated from both population and trajectory simulations.
 
 record\_stats.py contains the class used to record statistics collected from both population and trajectory simulations
 
