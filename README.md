@@ -9,14 +9,14 @@ The purpose of the code is to simulate a constant size diploid population that i
 
 The code folder contains three programs all of which run using Python 3.7. One simulates populations evolving (which we refer to as 'population simulations'). The second simulates allele trajectories, given a particular trajectory of the mean phenotype over time (which we refer to as 'trajectory simulations'). And the third summarizes statistics recorded over many of the trajectory and population simulations.
 
-Please note that both the *full model* and *all allele simulations (AA)* in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are both referred to as *population simulations* here, because they both simulate the dynamics of a population. And the *only allele simulations (OA)* in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are referred to as *trajectory simulations* here, because they only follow trajectories of alleles given a specific phenotypic effect.
+Please note that both the *full model* and *all allele simulations* in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are both referred to as *population simulations* here, because they both simulate the dynamics of a population. And the *single allele simulations* (called *only allele* in early versions) in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are referred to as *trajectory simulations* here, because they only follow trajectories of alleles given a specific phenotypic effect.
 
 
 These programs can be run using command line, but the juypter notebook **getting\_started\_notebook.ipynb** is highly reccommended to help you get started.
 
 ## Population simulations
 
-Use simulate\_populations\_argparse.py to simulate a the full population (either using the computationally expensive full model, or the faster approximation (AA) which just simulates a population by tracking all the alles segregating in the population).
+Use simulate\_populations\_argparse.py to simulate a the full population (either using the computationally expensive *full model* simulation, or the faster approximation (*all allele*) simulation, which just simulates a population by tracking all the alles segregating in the population).
 The program can be run on the command line and takes the following parameters:  
 
 -N population size (default=5000) 
@@ -39,7 +39,7 @@ The program can be run on the command line and takes the following parameters:
 
 -lTN --lag\_time\_N The lag time in units of pop size, i.e. the burn time between runs. If runs>1, then the state of the population right before the shift is copied and saved, and the copied population is later be used for a different run. For this to reasonable, this copied population must have a second burn time, which we call a lag time. For final conclusions, make the lag time the same as the burn time. But to quickly generate some rough simulation results, a shorter lag time can be used. (Default= 1, but recommend 10 for any final conclusions)
 
--a, --algorithm This must be either 'approx' or 'exact'. 'approx' means the simulations do not track individuals, only all of the alleles segregating in the population. 'exact' realizes the full model and tracks individuals in the population too. (Default=approx)
+-a, --algorithm This must be either 'approx' or 'exact'. 'approx' runs the *all allele* simulation, which does not track individuals, only all of the alleles segregating in the population. 'exact' runs the *full model* simulation, which realizes the full model and tracks individuals in the population too. (Default=approx)
 
 -o --offspring This is only relavent if the 'exact' algorithm is being used. Specifying -o, will make the simulations sample by offspring fitness instead of parents. The default is to use parent fitness which results in faster simulations than using offspring fitness
 
@@ -47,7 +47,7 @@ The program can be run on the command line and takes the following parameters:
 
 ## Trajectory simulations
 
-simulate\_trajectories\_argparse.py simulates allele trajectories of alleles segregating at the time of the shift, with specific squared effect sizes in units of &delta;<sup>2</sup> =Vs/(2N) (=steady-state scaled selection coefficients). Under the recommended default setting, the simulator will average results for a given squared effect size over the corresponding initial MAF distribution. The program can be run on the command line and takes the following parameters: 
+simulate\_trajectories\_argparse.py simulates allele trajectories of alleles segregating at the time of the shift, with specific squared effect sizes in units of &delta;<sup>2</sup> =Vs/(2N) (=steady-state scaled selection coefficients); this is referred to as the *single allele* simulation in the paper (or *only allele* (OA) in early versions). Under the recommended default setting, the simulator will average results for a given squared effect size over the corresponding initial MAF distribution. The program can be run on the command line and takes the following parameters: 
 
 -nM --number_mutants The number of alleles (per tuple) that we simulate in this trajectory run. With the simulator defaults, a *tuple* will just correspond to a particular choice of scaled steady-state selection coefficient (=squared phenotypic effect in units of Vs/(2N)). And taking nM=500 for example, means that for each of the 13 scaled selection coefficients, ranging from 0.1 to 100, that the simulator by default uses, it will simulate trajectories of 500 alleles with phenotypic effect aligned to the shift in optimum and 500 alleles with phenotypic effect opposing the shift in optimum. For reasonable results you probably want to do, say, a couple 1000 mutants per run, and also do a number of such runs. (default = 1000)
 
