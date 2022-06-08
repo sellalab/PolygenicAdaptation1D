@@ -9,7 +9,7 @@ The purpose of the code is to simulate a constant size diploid population that i
 
 The code folder contains three programs all of which run using Python 3.7. One simulates populations evolving (which we refer to as 'population simulations'). The second simulates allele trajectories, given a particular trajectory of the mean phenotype over time (which we refer to as 'trajectory simulations'). And the third summarizes statistics recorded over many of the trajectory and population simulations.
 
-Please note that both the *full model* and *all allele simulations* in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are both referred to as *population simulations* here, because they both simulate the dynamics of a population. And the *single allele simulations* (called *only allele* in early versions) in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are referred to as *trajectory simulations* here, because they only follow trajectories of alleles given a specific phenotypic effect.
+Please note that both the *full model* and *all allele* simulation in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are both referred to as *population simulations* here, because they both simulate the dynamics of a population. And the *single allele* simulation (called *only allele* in early versions) in [Hayward and Sella (2019)](https://www.biorxiv.org/content/10.1101/792952v2) are referred to as *trajectory simulations* here, because they only follow trajectories of alleles given a specific phenotypic effect.
 
 
 These programs can be run using command line, but the juypter notebook **getting\_started\_notebook.ipynb** is highly reccommended to help you get started.
